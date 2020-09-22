@@ -1,0 +1,4899 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Untitled Solutions - updates-discussion</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        /* === GENERAL === */
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, Monospace;
+    white-space: pre-wrap;
+}
+
+.pre--multiline {
+    margin-top: 4px;
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 5px;    
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.emoji {
+    width: 24px;
+    height: 24px;
+    margin: 0 1px;
+    vertical-align: middle;
+}
+
+.emoji--small {
+    width: 16px;
+    height: 16px;
+}
+
+.emoji--large {
+    width: 32px;
+    height: 32px;
+}
+
+.mention {
+    font-weight: 600;
+}
+
+/* === INFO === */
+
+.info {
+    display: flex;
+    max-width: 100%;
+    margin: 0 5px 10px 5px;    
+}
+
+.info__guild-icon-container {
+    flex: 0;
+}
+
+.info__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.info__metadata {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.info__guild-name {
+    font-size: 1.4em;
+}
+
+.info__channel-name {
+    font-size: 1.2em;
+}
+
+.info__channel-topic {
+    margin-top: 2px;
+}
+
+.info__channel-message-count {
+    margin-top: 2px;
+}
+
+.info__channel-date-range {
+    margin-top: 2px;
+}
+
+/* === CHATLOG === */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: flex;
+    margin: 0 10px;
+    padding: 15px 0;
+    border-top: 1px solid;
+}
+
+.chatlog__author-avatar-container {
+    flex: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    flex: 1;
+    min-width: 50%;
+    margin-left: 20px;
+}
+
+.chatlog__author-name {
+    font-size: 1em;
+}
+
+.chatlog__timestamp {
+    margin-left: 5px;
+    font-size: .75em;
+}
+
+.chatlog__content {
+    padding-top: 5px;
+    font-size: .9375em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 5px;
+    font-size: .8em;
+}
+
+.chatlog__attachment {
+    margin: 5px 0;
+}
+
+.chatlog__attachment-thumbnail {
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    max-width: 520px;
+    margin-top: 5px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    width: 100%;
+    display: flex;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chatlog__embed-author-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 10px;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-size: .875em;
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 20px;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 10px;
+}
+
+.chatlog__embed-image {    
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 10px;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-weight: 600;
+    font-size: .75em;
+}
+
+.chatlog__reactions {
+    display: flex;    
+}
+
+.chatlog__reaction {
+    margin: 6px 2px 2px 2px;
+    padding: 2px 6px 2px 2px;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-emoji {
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.chatlog__reaction-count {
+    font-size: .875em;
+    vertical-align: middle;
+}
+/* === GENERAL === */
+
+body {
+    background-color: #36393e;
+    color: #ffffffb3;
+}
+
+a {
+    color: #0096cf;
+}
+
+.pre {
+    background-color: #2f3136;
+}
+
+.pre--multiline {
+    border-color: #282b30;
+    color: #839496;
+}
+
+.mention {
+    background-color: #738bd71a;
+    color: #7289da;
+}
+
+/* === INFO === */
+
+.info__guild-name {
+    color: #ffffff;
+}
+
+.info__channel-name {
+    color: #ffffff;
+}
+
+.info__channel-topic {
+    color: #ffffff;
+}
+
+/* === CHATLOG === */
+
+.chatlog__message-group {
+    border-color: #ffffff0a;
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__edited-timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__embed-content-container {
+    background-color: #2e30364d;
+    border-color: #2e303699;
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: #ffffff99;
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: #ffffff99;
+}
+
+.chatlog__embed-footer {
+    color: #ffffff99;
+}
+
+.chatlog__reaction {
+    background-color: #ffffff0a;
+}
+
+.chatlog__reaction-count {
+    color: #ffffff4d;
+}
+    </style>
+</head>
+<body>
+    
+<div class="info">
+    <div class="info__guild-icon-container">
+        <img class="info__guild-icon" src="https://cdn.discordapp.com/icons/537248436932837388/b4816144eda043b99996d0399001f213.png" />
+    </div>
+    <div class="info__metadata">
+        <div class="info__guild-name">Untitled Solutions</div>
+        <div class="info__channel-name">updates-discussion</div>
+        
+
+        <div class="info__channel-message-count">344 messages</div>
+        
+    </div>
+</div>
+
+<div class="chatlog">
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">14-Feb-19 07:34 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span> please find the seed data for testing
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/545689405222944776/useracc.txt">
+                                
+                                    Attachment: useracc.txt (278 B)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">14-Feb-19 08:44 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="jdg23#3217">@jdg23</span> Could you reorganize the roles so that they&#39;re in ascending order please?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Thanks
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">14-Feb-19 09:33 PM</span>
+
+                        <div class="chatlog__content">
+                            Nick
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            With files that have revision histories
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Include the date of the initial edit in the commit message.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            E.g 31st latest version, 12th original, iteration 1 15th, iteration 2 16th
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Place original, push iteration 1 with the comment &quot;changed on 15th because ...&quot;
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Etc
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            This is only necessary for the transition but not after we migrate the files.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also do me a favour and do client Comms tomorrow, haven&#39;t fixed that up yet
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">14-Feb-19 09:45 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span> I&#39;ll have it done by 10pm
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            *22:00
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">14-Feb-19 09:47 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks <span class="mention" title="jdg23#3217">@jdg23</span>
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:25 AM</span>
+
+                        <div class="chatlog__content">
+                            Minutes for 20190214 20190215  on  GitLab for review and reference for tasks to complete.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:25 AM</span>
+
+                        <div class="chatlog__content">
+                            I reviewed 14
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 11:04 AM</span>
+
+                        <div class="chatlog__content">
+                            20190214-minutes: Decisions made point 2 &quot;Decided on using .csv or .txt subject to what’s easier to implement.&quot; seems to be missing context. Decided on those file formats for dummy authentication data?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">17-Feb-19 11:06 AM</span>
+
+                        <div class="chatlog__content">
+                            Can you type up a short paragraph to add context and commit.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 11:11 AM</span>
+
+                        <div class="chatlog__content">
+                            I won&#39;t be able to do that until about 1, I think. But I can if needed?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">17-Feb-19 11:12 AM</span>
+
+                        <div class="chatlog__content">
+                            1pm is fine. Thank you
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:09 PM</span>
+
+                        <div class="chatlog__content">
+                            Note on 20190214-minutes point 8a (merging): it says &quot;merging to development&quot;. Should we change the name of the branch on gitlab from experimental to development?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:10 PM</span>
+
+                        <div class="chatlog__content">
+                            Can I get sent the documents <span class="mention" title="jdg23#3217">@jdg23</span> ?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            So I can update the GitDocs
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:11 PM</span>
+
+                        <div class="chatlog__content">
+                            Also, have we written the change on how client comms are stored in the policies? (Replies are now named based on when the question to client was sent, not based on when the reply was received)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:22 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span> I&#39;m working on them now. I will send them once they are ready.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:22 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:32 PM</span>
+
+                        <div class="chatlog__content">
+                            20190215-minutes point 10-c-ii-2-d: &quot;These changes should be reflected in accountability/reviews/accountability??&quot; Not sure what you mean here
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Updated 20190214-minutes
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:37 PM</span>
+
+                        <div class="chatlog__content">
+                            The points before it should be reflected in those documents. We wasn&#39;t sure  if the points were referenced in other documents.
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546686522666123264/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/545664108893044737/546686522666123264/unknown.png" />
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            If that makes sense
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:39 PM</span>
+
+                        <div class="chatlog__content">
+                            Yes, but I mean the &quot;??&quot;. Unsure if that&#39;s the full list of docs, and whether that&#39;s repeating itself or talking aboht a section of a doc.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:41 PM</span>
+
+                        <div class="chatlog__content">
+                            During the meeting, you wasn&#39;t sure if checking the Discord channel was mentioned in Accountability
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            So I left the ?? to remind me to check.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Can be removed.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:44 PM</span>
+
+                        <div class="chatlog__content">
+                            Maybe replace w/ &quot;reflected in relevant documents, including accountability&quot; or sth like that?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:47 PM</span>
+
+                        <div class="chatlog__content">
+                            sure
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 01:53 PM</span>
+
+                        <div class="chatlog__content">
+                            Updated gitlab setup w/ troubleshooting info
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 04:30 PM</span>
+
+                        <div class="chatlog__content">
+                            Pushed Authenticator with logging to experimental
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> AuthenticationTests can&#39;t resolve the junit imports on my machine, and I&#39;m unsure how to fix that
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 04:51 PM</span>
+
+                        <div class="chatlog__content">
+                            Alt+enter works for me but my push should have edited the project file to make it work for you
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:00 PM</span>
+
+                        <div class="chatlog__content">
+                            Wondering if the project file is being pushed rn. Will check after call?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:19 PM</span>
+
+                        <div class="chatlog__content">
+                            Courier New fontsize 10
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            For code within documents
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            The file was yuconz.iml james
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span>
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I thought ink was the intellij project file
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:34 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> I can see that IntelliJ has successfully pulled that file, but jt doesn&#39;t seem to be using it?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:34 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh but it never added the jars themselves
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            For the libraries
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:34 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh, so we should include the jars as well then?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:34 PM</span>
+
+                        <div class="chatlog__content">
+                            It says jar://&#163;module_dir&#163;//
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            But there&#39;s never the addition of those files
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Feels weird they weren&#39;t pushed
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            We can put them in our jar I think
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            But I&#39;d want them in the gut too
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Git
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Oof
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:36 PM</span>
+
+                        <div class="chatlog__content">
+                            I don&#39;t have any idea how to include them though, maybe somehow put the junit library inside our project?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also, intellij seems to have a &quot;test sources root&quot; option, so we can consider throwing the tests in there?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:40 PM</span>
+
+                        <div class="chatlog__content">
+                            I kinda already pushed the libraries
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            If you pull you should be able to run the tests
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            If you can figure out how test sources root works and how to push it though then by all means.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:42 PM</span>
+
+                        <div class="chatlog__content">
+                            Authentication tests now seems to correctly import junit
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Thanks Marin
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 05:42 PM</span>
+
+                        <div class="chatlog__content">
+                            Sweet
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 06:07 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Made a session class, tentatively changed AppController so that result stores the exit code. I recommend storing the session instead, so appcontroller can later log out, destroying the session through authenticator.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Actually, considering making a static method in session called destroysession(session), which sets it to null. Wondering if that&#39;ll work&#129300;
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also, there&#39;s a bug in AuthenticationTests that&#39;s preventing me from running and testing anything. Since AppController isn&#39;t static, the logOut test isn&#39;t calling AppController.logout properly
+
+                                <span class="chatlog__edited-timestamp" title="17-Feb-19 06:09 PM">(edited)</span>
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Turns out destroying objects doesn&#39;t work that way in java, the most I can do is set the instance variables to null, and let the garbage collector clean it up when there are no more pointers to the object
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 06:22 PM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;d comment logout out
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;d also just remove all references and leave it to garbage collection
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 06:24 PM</span>
+
+                        <div class="chatlog__content">
+                            The thing is, I can&#39;t ensure that no other classes are keeping the reference, so I kinda have to make it unusable
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Do you mind if I rewrite AppController to store the active  session, or would you rather do that yourself?
+
+                                <span class="chatlog__edited-timestamp" title="17-Feb-19 06:25 PM">(edited)</span>
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 06:26 PM</span>
+
+                        <div class="chatlog__content">
+                            We&#39;ll make sure it gets destroyed in both our classes
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            You can make changes sure
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            If you could make a main class too that&#39;ll be helpful
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Like a thing that makes an appcontroller object
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Then add a run() class to app controller?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;ll leave it up to you I&#39;m still a few minutes out from codinh
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 06:27 PM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;ll do the main class and changes after I get home (about 30 min)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 06:28 PM</span>
+
+                        <div class="chatlog__content">
+                            Okay that&#39;s fine we&#39;ll reassess the work then
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="jdg23#3217">@jdg23</span> <span class="mention" title="Valentia#6778">@Valentia</span> uploaded coding style, please handle that
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 08:09 PM</span>
+
+                        <div class="chatlog__content">
+                            To do (code): add exit variable to main method so that it doesn&#39;t loop forever, fix tests and the logout method in Authenticate, comment all methods.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 09:18 PM</span>
+
+                        <div class="chatlog__content">
+                            Meet at 10pm
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span> I didn&#39;t make it so the Auth log uses getLoginTime, that&#39;s one thing I forgot
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">17-Feb-19 09:27 PM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m not sure I understand? Auth log takes the same timestamp as the session rn
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">17-Feb-19 09:39 PM</span>
+
+                        <div class="chatlog__content">
+                            Systems.time is called twice separately.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Documents discussion in general code discussion here.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Cluttered otherwise
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:25 AM</span>
+
+                        <div class="chatlog__content">
+                            Are you happy with this
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546849775715352587/GANTT_CHART.pdf">
+                                
+                                    Attachment: GANTT_CHART.pdf (239.2 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:26 AM</span>
+
+                        <div class="chatlog__content">
+                            Yeah thats good
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:26 AM</span>
+
+                        <div class="chatlog__content">
+                            Nicholas -&gt; Push these to GitLab and convert to PDF for submission
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546850069606039601/drive-download-20190216T122626Z-001.zip">
+                                
+                                    Attachment: drive-download-20190216T122626Z-001.zip (385.6 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:36 AM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span>
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            You conscious
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:36 AM</span>
+
+                        <div class="chatlog__content">
+                            Will do
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Where do I put work log? <span class="mention">@everyone</span>
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Nevermind
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546855799230824469/UntitledSolutionPDFs.zip">
+                                
+                                    Attachment: UntitledSolutionPDFs.zip (5.5 MB)
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            All PDFs Converted
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:51 AM</span>
+
+                        <div class="chatlog__content">
+                            Missing team leader journal
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:53 AM</span>
+
+                        <div class="chatlog__content">
+                            I found a few documents not stored
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Lemme get them all at once
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546857170851987456/UntitledSolutionsExtraPDFs.zip">
+                                
+                                    Attachment: UntitledSolutionsExtraPDFs.zip (487.3 KB)
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            There you go
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I can&#39;t push as my connection to the server isn&#39;t working
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="jdg23#3217">@jdg23</span> Can you push the documents?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            To the GitLab?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Its not letting me commit
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:59 AM</span>
+
+                        <div class="chatlog__content">
+                            You can do it tomorrow since DJB wont have access to our Git docs
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">18-Feb-19 12:59 AM</span>
+
+                        <div class="chatlog__content">
+                            Ah good I was freaking out
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            DJB?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">18-Feb-19 01:00 AM</span>
+
+                        <div class="chatlog__content">
+                            Doctor Jackson Barns
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">18-Feb-19 01:34 AM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="jdg23#3217">@jdg23</span>
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546867063264772097/Stage3-scenarios.docx">
+                                
+                                    Attachment: Stage3-scenarios.docx (19 KB)
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="jdg23#3217">@jdg23</span>
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546873429484240917/Stage3-scenarios.docx">
+                                
+                                    Attachment: Stage3-scenarios.docx (19 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">18-Feb-19 02:03 AM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546874368085721089/For_GItLab_NDS8.zip">
+                                
+                                    Attachment: For_GItLab_NDS8.zip (349.9 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">18-Feb-19 02:06 AM</span>
+
+                        <div class="chatlog__content">
+                            I already have them Dw
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">18-Feb-19 02:06 AM</span>
+
+                        <div class="chatlog__content">
+                            Some have been updated
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">18-Feb-19 02:06 AM</span>
+
+                        <div class="chatlog__content">
+                            Cool cool
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">18-Feb-19 02:10 AM</span>
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546876236874383361/US_Stage2.zip">
+                                
+                                    Attachment: US_Stage2.zip (22.7 KB)
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546876245598797824/stage2_yukonz.zip">
+                                
+                                    Attachment: stage2_yukonz.zip (18.1 KB)
+                            </a>
+                        </div>
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/546876247439966228/Stage2-papyrus.zip">
+                                
+                                    Attachment: Stage2-papyrus.zip (16.4 KB)
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">23-Feb-19 01:25 PM</span>
+
+                        <div class="chatlog__content">
+                            Feedback in from David Barnes
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">23-Feb-19 01:47 PM</span>
+
+                        <div class="chatlog__content">
+                            Acknowledged, we’ll go through it on Monday
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">24-Feb-19 02:22 AM</span>
+
+                        <div class="chatlog__content">
+                            Added my minutes for 20190221
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention">@here</span> if you could post completed work here that&#39;d be great, I don&#39;t want any of our revisions to be done last minute during the meeting Monday.<br /><br /> Maybe around 6pm mention whether you&#39;ve finished or if you&#39;ll do it early Monday?
+
+                                <span class="chatlog__edited-timestamp" title="24-Feb-19 02:29 AM">(edited)</span>
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also before pushing changes to the alterations file, check that no one has changed it between the time you downloaded it and when you upload it. Such are the limitations of our system at the moment, luckily we shouldn&#39;t have to make large changes like this again in the future.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">24-Feb-19 05:12 PM</span>
+
+                        <div class="chatlog__content">
+                            Working on Group Policies
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Pushed group policy and revisions update
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Working on  Decisions
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">24-Feb-19 05:58 PM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;ve finished all my alterations, I&#39;m going to upload then update alterations.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Will double check before uploading whether someone has pushed in that time.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">24-Feb-19 06:53 PM</span>
+
+                        <div class="chatlog__content">
+                            Committed all my changes, work complete.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">24-Feb-19 07:06 PM</span>
+
+                        <div class="chatlog__content">
+                            Pushed changes to Decisions and Revisions.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            In other news, I&#39;ve learnt that git really doesn&#39;t like merge conflicts in docx files
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            (Since they aren&#39;t plaintext files)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Either way, finished my edits.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">24-Feb-19 07:22 PM</span>
+
+                        <div class="chatlog__content">
+                            You mean alterations?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">24-Feb-19 07:23 PM</span>
+
+                        <div class="chatlog__content">
+                            Yes
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">24-Feb-19 08:22 PM</span>
+
+                        <div class="chatlog__content">
+                            Considering adding a minor edit to Decisions -&gt; Document Writing mentioning that git can&#39;t handle merge conflicts in non-plaintext files (e.g. docx files)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">24-Feb-19 08:27 PM</span>
+
+                        <div class="chatlog__content">
+                            So be more careful or?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">24-Feb-19 08:41 PM</span>
+
+                        <div class="chatlog__content">
+                            No, just saying that we should consider filetype more carefully if we ever change our document filetype. Hopefully we won&#39;t, since changing over would be an incredible amount of extra work, but it&#39;s best to write it anyway.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">24-Feb-19 08:45 PM</span>
+
+                        <div class="chatlog__content">
+                            Oof alright
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">24-Feb-19 11:41 PM</span>
+
+                        <div class="chatlog__content">
+                            Pushed 20190222 minutes, disciplinary log and notice, changes to minutes template
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">25-Feb-19 01:58 AM</span>
+
+                        <div class="chatlog__content">
+                            Pushed edit in Decisions and Alterations on Git&#39;s merge conflicts.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">26-Feb-19 03:40 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span> One of the meeting minutes is named 20250219-minutes. Year-month-day?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">26-Feb-19 03:40 PM</span>
+
+                        <div class="chatlog__content">
+                            That&#39;s rather peculiour
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Thats supposed to be 20190225
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">26-Feb-19 03:41 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span> Also, past minutes have used usernames instead of names in the discussion, but recent minutes seem to have both
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">26-Feb-19 03:41 PM</span>
+
+                        <div class="chatlog__content">
+                            I think the 19 and 25 got switched by accident
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;ll get on it and have it done by thursday
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">26-Feb-19 03:42 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also, <span class="mention" title="jdg23#3217">@jdg23</span> the disciplinary policy and procedure doc doesn&#39;t mention the disciplinary notice log.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Replaced all mentions of chronological order related to logbooks with reverse chronological order.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            No documents specified the order that things in Alterations should be stored, and I couldn&#39;t figure out where to put it, so it&#39;s not mentioned for now.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">27-Feb-19 06:05 PM</span>
+
+                        <div class="chatlog__content">
+                            1605 report, I have almost finished the review template, the only thing I&#39;m missing are the field names that should be on the minutes <span class="mention" title="Valentia#6778">@Valentia</span> is currently working on. If after I upload you could double check formatting <span class="mention" title="izlimix#3442">@izlimix</span> that would be great.<br /><br />I don&#39;t think we need to review this document because we all already agreed on what it should contain.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            If you could tell me what they were <span class="mention" title="Valentia#6778">@Valentia</span> if you won&#39;t finish soon that&#39;ll be great.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:04 AM</span>
+
+                        <div class="chatlog__content">
+                            - Alterations doc updated. Also changed chronological to reverse chronological in alterations.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            As in it mentioned it in the text description.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Noticed a weird date format for the minutes. Also please use the new minutes template
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:05 AM</span>
+
+                        <div class="chatlog__content">
+                            Thanks <span class="mention" title="jdg23#3217">@jdg23</span> , I forgot to check the description on alterations
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            What&#39;s up with the date format?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:06 AM</span>
+
+                        <div class="chatlog__content">
+                            I think you guys mentioned it above
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            The file name itself
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:06 AM</span>
+
+                        <div class="chatlog__content">
+                            Ah, it hasn&#39;t been fixed yet?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:07 AM</span>
+
+                        <div class="chatlog__content">
+                            I checked it around 1hours ago I think
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:07 AM</span>
+
+                        <div class="chatlog__content">
+                            Also, just remembered that I still need to upload the two handwritten scanned documents. I&#39;ll get that done tomorrow morning?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            If you&#39;ve still got git open, could you use the git mv (or git move, not sure) command to fix that?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:08 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;m in bed now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:08 AM</span>
+
+                        <div class="chatlog__content">
+                            That&#39;s alright then, we&#39;ll just fix it tomorrow?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:08 AM</span>
+
+                        <div class="chatlog__content">
+                            Sure.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Hoping all assigned jobs are completed as scheduled.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            We will review tomorrow.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:10 AM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;ve realised that updating the worklog and other documents is actually a lot more difficult now that I can&#39;t access it from my phone&#129300;
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            It&#39;s interesting to note how that forces the habit of planning when to do work? Kind of like how restrictions force self-discipline?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:12 AM</span>
+
+                        <div class="chatlog__content">
+                            It does indeed
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;m signing out so catch you tomorrow
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:12 AM</span>
+
+                        <div class="chatlog__content">
+                            Either way, go to sleep :p.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Good night
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">28-Feb-19 01:12 AM</span>
+
+                        <div class="chatlog__content">
+                            Night boy
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Feb-19 11:36 AM</span>
+
+                        <div class="chatlog__content">
+                            Added scans of diagrams (difficult to read bc they&#39;re in pencil)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">28-Feb-19 11:36 AM</span>
+
+                        <div class="chatlog__content">
+                            - Updated Incorrect Minutes Name<br />- Added Minutes 20190226
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">28-Feb-19 12:33 PM</span>
+
+                        <div class="chatlog__content">
+                            - Worklog Updated
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 11:36 AM</span>
+
+                        <div class="chatlog__content">
+                            Pushed scan of remaining work for stage 4 (passed around during meeting)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:19 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Yoy seem to have pushed to a new experimental branch when we&#39;re using developmental, is that intentional?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:28 PM</span>
+
+                        <div class="chatlog__content">
+                            No it was the name change, my local branch not existing on the gut made it
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I had to resolve a lot of annoying issues because if the merge then recreation of a new branch, apparently you&#39;re supposed to delete old branches when you do that
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:30 PM</span>
+
+                        <div class="chatlog__content">
+                            About to push all converted pdfs
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:30 PM</span>
+
+                        <div class="chatlog__content">
+                            You can get rid of experimental if you want
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:32 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks <span class="mention" title="Kazoo2#4483">@Kazoo2</span>
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:33 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh I got it I thought it would be harder tbh
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            We got enums in
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I didn&#39;t do exit codes though
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:34 PM</span>
+
+                        <div class="chatlog__content">
+                            It&#39;s fine, I&#39;ll handle exit codes
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:35 PM</span>
+
+                        <div class="chatlog__content">
+                            Still need to actually integrate them
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            They&#39;re just &quot;there&quot; at the moment
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 12:47 PM</span>
+
+                        <div class="chatlog__content">
+                            Changing authenticator to use exitcode enum now, but the log will append the description instead of the (integer) code noe
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Considering adding a second field in exitcode &quot;logText&quot;. Thoughts, <span class="mention" title="Kazoo2#4483">@Kazoo2</span> ?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Temporarily changed the UI logic (line 104 and 106 of AppController, credentials() ) to check if exit code is equal to ExitCode.INVALID_LOGIN, etc, but we should consider changing that to straight-up printing the description.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 01:04 PM</span>
+
+                        <div class="chatlog__content">
+                            Pushed exitCode enum
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I think I&#39;ll swap the two exitCode methods around, so toString will return the logtext, and getDescription will return the sentence
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:12 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span> sorry wasn&#39;t paying attention, pushed change to exit code.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            If you look at getLogText you might see why that method is kinda pointless.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            With the change I did
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:14 PM</span>
+
+                        <div class="chatlog__content">
+                            I didn&#39;t realise that enum name is an option
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Thanks
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:14 PM</span>
+
+                        <div class="chatlog__content">
+                            &#128076;
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:15 PM</span>
+
+                        <div class="chatlog__content">
+                            In that case, I can change getLogText in Authenticator to just getExitCode().name()?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            (And remove the logText method)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:15 PM</span>
+
+                        <div class="chatlog__content">
+                            Yes essentially
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:15 PM</span>
+
+                        <div class="chatlog__content">
+                            I&#39;ll do that now
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Pushed
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also updated authentication tests w/ exitcode enum instead of int
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:22 PM</span>
+
+                        <div class="chatlog__content">
+                            Nice, yeah that error was eeking me out
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;m going to get some food then do some work
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:22 PM</span>
+
+                        <div class="chatlog__content">
+                            Enjoy food~
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;m going to change Role to store a private final HashSet instead of an ArrayList (since its contents are unique)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 02:38 PM</span>
+
+                        <div class="chatlog__content">
+                            Sure
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 03:05 PM</span>
+
+                        <div class="chatlog__content">
+                            There&#39;s so much background noise I don&#39;t think this&#39;ll work
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span> added two new classes, may need to go over them together later.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 04:10 PM</span>
+
+                        <div class="chatlog__content">
+                            I saw the personal details class. Not what I was expecting, but it works. I&#39;d like to recommend removing the slash from town/city, since slashes are weird in command lines
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="jdg23#3217">@jdg23</span> Safe class diagram updates:<br />New Session class<br />New enums:<br />- permissions (what that role can do, not person-specific)<br />- role (Director, User, etc. Each has a list of permissions)<br />- exit code (has description)<br />Also: how the session class is used by authenticator (which creates it) and appcontroller (which requests a session)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:03 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> I&#39;m trying to work on Authorisor but unsure what createRecord is meant to do
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:19 PM</span>
+
+                        <div class="chatlog__content">
+                            We keep records of authorisation attempts no?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span> I found an issue with one of our pdfs
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/551167021111574540/JPEG_20190301_222051.jpg">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/545664108893044737/551167021111574540/JPEG_20190301_222051.jpg" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:28 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> If it&#39;s the record of the authorisation attempts, then I&#39;d like to call it logAuthAttempt or something similar with log in it? It&#39;s a bit confusing with the similarity to createPersonalDetailsRecord (wherever that will be)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:31 PM</span>
+
+                        <div class="chatlog__content">
+                            Sure, although with the permissions as it is I didn&#39;t think we&#39;d have methods like that?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Like right now all we need is to pass in roles and an action right? Or would you prefer every action be predefined in authorisation m
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Guess it would be clearer
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Hadn&#39;t thought too much about it tbh
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:38 PM</span>
+
+                        <div class="chatlog__content">
+                            Honestly passing in roles and actions is fine (except I&#39;d prefer if it was the session passed in, since some are User-specific), but other classes might have predefined methods
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I just find the distinction between different types of record a bit messy, when we could just call them logs
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:39 PM</span>
+
+                        <div class="chatlog__content">
+                            Your reasoning is fair, I abstain.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:40 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks, I&#39;ll make the change?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 10:40 PM</span>
+
+                        <div class="chatlog__content">
+                            Sure
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 11:16 PM</span>
+
+                        <div class="chatlog__content">
+                            Pushed an incomplete update
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Session now takes, stores and returns an Enum Role, but the constructors in AppController and in Authentication don&#39;t call Session properly (compile-time error)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Should we continue to store roles as a string of numbers in authDb? (Then I&#39;d need to make a conversion, but that&#39;s fine). AppController UI also needs to be fixed.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">01-Mar-19 11:53 PM</span>
+
+                        <div class="chatlog__content">
+                            Hmmm
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">01-Mar-19 11:57 PM</span>
+
+                        <div class="chatlog__content">
+                            Considering using Enum.values() (which is an implicit method) to produce the list for ArrayList roles in AppController, and using Enum.ordinal to get the indices for conversion to an int for indexing
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 12:01 AM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Request to treat the order Role is currently defined as the correct indices for the roles (so user is now 0, Employee is now 1, HREmployee is now 2, Manager is now 3, Director is now 4, and reviewer is now 5). This would mean I can just replace the roles definition in AppController with Arrays.asList(Role.values()) (or sth similar)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">02-Mar-19 12:23 AM</span>
+
+                        <div class="chatlog__content">
+                            Currently that&#39;ll break our unit tests but be otherwise fine
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I can&#39;t think of a good way to do it otherwise so I guess that&#39;ll be our implementation <span class="mention" title="izlimix#3442">@izlimix</span>
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 12:28 AM</span>
+
+                        <div class="chatlog__content">
+                            Ok, thanks marin
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Having an issue with credentials(). It grabs a role from menuselection by passing in roles as a list of strings, but it&#39;s currently a list of roles. I could convert that into a list of strings in credentials using a map function?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">02-Mar-19 12:49 AM</span>
+
+                        <div class="chatlog__content">
+                            Actually yeah, I didn&#39;t think of that, do what you think is best and I&#39;ll review in the morning
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 12:50 AM</span>
+
+                        <div class="chatlog__content">
+                            Ok, my code will be pretty hacky for now, but it should work when I&#39;m done~
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 01:45 AM</span>
+
+                        <div class="chatlog__content">
+                            Pushed change
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Please take a look at the changes in the morning? I&#39;m going to put authorisation and personalDetails on hold until after sleep.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 12:46 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="jdg23#3217">@jdg23</span> About the class diagram: I remember David mentioning sth about not being able to find sth in the diagram in the feedback? Would you mind checking if that&#39;s in the diagram now? Thanks
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 04:35 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Changed menuselection to use Generics instead and call toString, so that an arbitrary list of objects can be passed as menu options
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Also considering making logout and exit permissions, since then we could just print all permissions and be done with the menu (instead of printing permissions + logout + exit)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">02-Mar-19 05:37 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Whats the problem?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I cant see
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">02-Mar-19 06:01 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span> look at the review template pdf
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span> I&#39;m not necessarily against the exit and logout permissions, although it does look a bit iffy
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Cohesion and all that.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;m going to make a database class, this will currently hold mockup data and we can update it to a working dB class later.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">02-Mar-19 08:29 PM</span>
+
+                        <div class="chatlog__content">
+                            -20190201-minutes  pushed
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            FYI  I&#39;m not feeling great and will have an early night and make a start on the UML diagram tomorrow.
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span>  I will also convert the Gantt then
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">02-Mar-19 08:32 PM</span>
+
+                        <div class="chatlog__content">
+                            Cool cool thank you
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">02-Mar-19 08:33 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span> can you update the  work log with the most recent next steps  from 20190301 minutes and convert to PDF
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">02-Mar-19 08:36 PM</span>
+
+                        <div class="chatlog__content">
+                            Will do after I get some food
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 09:06 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Having the permissions would actually be iffy, considering you have to be able to exit when not logged in. Either way the logged-in menu still needs to include the active user&#39;s actions
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">02-Mar-19 09:16 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh you meant the prompt goes off when you do it by permissions, right that makes sense.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">02-Mar-19 09:44 PM</span>
+
+                        <div class="chatlog__content">
+                            We could do 1 Logout, 2 Exit, and then the User-specific ones
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">02-Mar-19 09:54 PM</span>
+
+                        <div class="chatlog__content">
+                            We&#39;d have to rewrite the method but I suppose, hmm.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">03-Mar-19 01:39 PM</span>
+
+                        <div class="chatlog__content">
+                            - Sent Marin discord log downloader<br />- Fixed Review Template
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 01:48 PM</span>
+
+                        <div class="chatlog__content">
+                            As in you fixed the pdf? I already fixed the template.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">03-Mar-19 01:50 PM</span>
+
+                        <div class="chatlog__content">
+                            I fixed both
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span>
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 01:54 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span> how could you fix both if I already fixed the template itself
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">03-Mar-19 01:54 PM</span>
+
+                        <div class="chatlog__content">
+                            Check it
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I added [Comments] to the comments section to make it more understandable
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Without it, it would just be a box
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 01:58 PM</span>
+
+                        <div class="chatlog__content">
+                            Fair
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:03 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Valentia#6778">@Valentia</span>  Latest GANTT pushed
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:03 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;ll shove that on the worklog
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:03 PM</span>
+
+                        <div class="chatlog__content">
+                            Thanks
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Two docs slipped through the net during the meeting.<br />-20190228_letterMiles pushed<br />-20190228_MilesResponse pushed
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Work ethic is repeated in the Review-template
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:22 PM</span>
+
+                        <div class="chatlog__content">
+                            Would you be able to fix that for me, I&#39;m currently travelling
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:23 PM</span>
+
+                        <div class="chatlog__content">
+                            What should I change it to ?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            
+
+                        </div>
+
+                        <div class="chatlog__attachment">
+                            <a href="https://cdn.discordapp.com/attachments/545664108893044737/551771781216600065/unknown.png">
+                                
+                                    <img class="chatlog__attachment-thumbnail" src="https://cdn.discordapp.com/attachments/545664108893044737/551771781216600065/unknown.png" />
+                            </a>
+                        </div>
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:30 PM</span>
+
+                        <div class="chatlog__content">
+                            That&#39;s not the version I pushed again
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/2.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="jdg23#3217">jdg23</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:30 PM</span>
+
+                        <div class="chatlog__content">
+                            Thats the version i pulled
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">03-Mar-19 02:30 PM</span>
+
+                        <div class="chatlog__content">
+                            Ah damn, I think I used the wrong version
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:01 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Pushed logAuthAttempt, going to change menu in AppController
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="Kazoo2#4483">@Kazoo2</span> Trying to make menu attempt the action for an arbitrary choice from a list of role-specific actions, but that kinda involves type-casting the way I&#39;m attempting it. Wondering if it would make more sense to call the Permission Enum Action instead, so a switch statement on Action can just be called to run the chosen method
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:29 PM</span>
+
+                        <div class="chatlog__content">
+                            <span class="mention" title="izlimix#3442">@izlimix</span> what difference would calling it action make?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Not that I disagree, just confused by your comment
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:29 PM</span>
+
+                        <div class="chatlog__content">
+                            Means we can make logout and exit enums as well
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:29 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:29 PM</span>
+
+                        <div class="chatlog__content">
+                            (Even though every user would implicitly be able to do it)
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:30 PM</span>
+
+                        <div class="chatlog__content">
+                            Sure?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Seems ... Logical
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:31 PM</span>
+
+                        <div class="chatlog__content">
+                            Just wondering if it&#39;s worth changing the class diagram again for this change
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Can I just push the typecasting version and have you take a look at it?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:31 PM</span>
+
+                        <div class="chatlog__content">
+                            Sure
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:35 PM</span>
+
+                        <div class="chatlog__content">
+                            Pushed
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:35 PM</span>
+
+                        <div class="chatlog__content">
+                            Where typecast
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:36 PM</span>
+
+                        <div class="chatlog__content">
+                            In menu() in appcontroller
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:43 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh because they&#39;re all objects
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Oof
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:44 PM</span>
+
+                        <div class="chatlog__content">
+                            Yeah. Otherwise I&#39;d have to convert all of the permissions into string form before passing them in, since login and exit are strings
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 03:59 PM</span>
+
+                        <div class="chatlog__content">
+                            I mean ... Hold on
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:00 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh but changing it to string would break run action
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:01 PM</span>
+
+                        <div class="chatlog__content">
+                            I might be able to do a switch statement on a string?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:10 PM</span>
+
+                        <div class="chatlog__content">
+                            Honestly I&#39;m just kinda lost
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:10 PM</span>
+
+                        <div class="chatlog__content">
+                            Why?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:11 PM</span>
+
+                        <div class="chatlog__content">
+                            What are we aiming for right now
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:12 PM</span>
+
+                        <div class="chatlog__content">
+                            In this case, to remove the typecasting to Permission in menu(). In general, to just write code that works for this stage
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:15 PM</span>
+
+                        <div class="chatlog__content">
+                            Right
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I&#39;ll try adding records to the dB
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Personal details ones
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            And handling requests
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:18 PM</span>
+
+                        <div class="chatlog__content">
+                            When you say handling requests, you mean to the db?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:18 PM</span>
+
+                        <div class="chatlog__content">
+                            Yeah like requests for files.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:18 PM</span>
+
+                        <div class="chatlog__content">
+                            Ok
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:19 PM</span>
+
+                        <div class="chatlog__content">
+                            Something else I don&#39;t think the class diagram requires exit codes enum
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:20 PM</span>
+
+                        <div class="chatlog__content">
+                            They aren&#39;t integers anymore, though
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Is the getAuthorisation method supposed to check whether the user has access to a specific record, or sth else?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:39 PM</span>
+
+                        <div class="chatlog__content">
+                            Just if they have permissions to do an action
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            It can&#39;t check specific records because it doesn&#39;t have another variable
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also are we going to model manager interaction too?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:42 PM</span>
+
+                        <div class="chatlog__content">
+                            We could add another variable (I pushed a version w/ authorisePersonalDetails in Authorisor). It really depends on what authorisor is meant to do
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            What do you mean by manager interaction?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:42 PM</span>
+
+                        <div class="chatlog__content">
+                            Oh wait yeah we went over this it doesn&#39;t matter because managers can&#39;t read personal details
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            I was thinking of other details
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            We could potentially make authorise methods for every action?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:44 PM</span>
+
+                        <div class="chatlog__content">
+                            We could have authorisor check whether a user is supervised by the requesting user for annual reviews and other records, when we get round to that
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            We could have multiple authorise methods, but I feel like that would be pretty messy
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Either way, authorisePersonalDetails is another way of defining the authorise method, since we can just tack the annual review permissions on as well
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            (Since the target user isn&#39;t really used for personal details, but is heavily used in annual reviews)
+
+                                <span class="chatlog__edited-timestamp" title="03-Mar-19 04:47 PM">(edited)</span>
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Just realised I hadn&#39;t pushed the commit. Done now.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:51 PM</span>
+
+                        <div class="chatlog__content">
+                            I removed my method from authorisor since your method encapsulates it
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Should we handle requests dB side, app side or Auth side?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:52 PM</span>
+
+                        <div class="chatlog__content">
+                            Exactly the same question I was foing to ask
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:53 PM</span>
+
+                        <div class="chatlog__content">
+                            Well having the authorisor return booleans is simpler
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Unless we have a record class
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            We should look at the class diagram I suppose
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Make less work for Jamie
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">03-Mar-19 04:54 PM</span>
+
+                        <div class="chatlog__content">
+                            Yeah
+
+                        </div>
+
+
+
+            </div>
+        </div>
+</div>
+
+</body>
+</html>

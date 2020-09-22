@@ -1,0 +1,3 @@
+[submodule "documentation/untitledsolutionsdocs"]
+	path = documentation/untitledsolutionsdocs
+	url = https://git.cs.kent.ac.uk/jd556/untitledsolutionsdocs.git

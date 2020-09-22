@@ -1,0 +1,635 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Untitled Solutions - questions-to-email</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        /* === GENERAL === */
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, Monospace;
+    white-space: pre-wrap;
+}
+
+.pre--multiline {
+    margin-top: 4px;
+    padding: 8px;
+    border: 2px solid;
+    border-radius: 5px;    
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.emoji {
+    width: 24px;
+    height: 24px;
+    margin: 0 1px;
+    vertical-align: middle;
+}
+
+.emoji--small {
+    width: 16px;
+    height: 16px;
+}
+
+.emoji--large {
+    width: 32px;
+    height: 32px;
+}
+
+.mention {
+    font-weight: 600;
+}
+
+/* === INFO === */
+
+.info {
+    display: flex;
+    max-width: 100%;
+    margin: 0 5px 10px 5px;    
+}
+
+.info__guild-icon-container {
+    flex: 0;
+}
+
+.info__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.info__metadata {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.info__guild-name {
+    font-size: 1.4em;
+}
+
+.info__channel-name {
+    font-size: 1.2em;
+}
+
+.info__channel-topic {
+    margin-top: 2px;
+}
+
+.info__channel-message-count {
+    margin-top: 2px;
+}
+
+.info__channel-date-range {
+    margin-top: 2px;
+}
+
+/* === CHATLOG === */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: flex;
+    margin: 0 10px;
+    padding: 15px 0;
+    border-top: 1px solid;
+}
+
+.chatlog__author-avatar-container {
+    flex: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    flex: 1;
+    min-width: 50%;
+    margin-left: 20px;
+}
+
+.chatlog__author-name {
+    font-size: 1em;
+}
+
+.chatlog__timestamp {
+    margin-left: 5px;
+    font-size: .75em;
+}
+
+.chatlog__content {
+    padding-top: 5px;
+    font-size: .9375em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 5px;
+    font-size: .8em;
+}
+
+.chatlog__attachment {
+    margin: 5px 0;
+}
+
+.chatlog__attachment-thumbnail {
+    max-width: 50%;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__embed {
+    display: flex;
+    max-width: 520px;
+    margin-top: 5px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    width: 100%;
+    display: flex;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.chatlog__embed-author-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 9px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 10px;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 4px;
+    font-size: .875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-size: .875em;
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 20px;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 10px;
+}
+
+.chatlog__embed-image {    
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 10px;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-weight: 600;
+    font-size: .75em;
+}
+
+.chatlog__reactions {
+    display: flex;    
+}
+
+.chatlog__reaction {
+    margin: 6px 2px 2px 2px;
+    padding: 2px 6px 2px 2px;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-emoji {
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.chatlog__reaction-count {
+    font-size: .875em;
+    vertical-align: middle;
+}
+/* === GENERAL === */
+
+body {
+    background-color: #36393e;
+    color: #ffffffb3;
+}
+
+a {
+    color: #0096cf;
+}
+
+.pre {
+    background-color: #2f3136;
+}
+
+.pre--multiline {
+    border-color: #282b30;
+    color: #839496;
+}
+
+.mention {
+    background-color: #738bd71a;
+    color: #7289da;
+}
+
+/* === INFO === */
+
+.info__guild-name {
+    color: #ffffff;
+}
+
+.info__channel-name {
+    color: #ffffff;
+}
+
+.info__channel-topic {
+    color: #ffffff;
+}
+
+/* === CHATLOG === */
+
+.chatlog__message-group {
+    border-color: #ffffff0a;
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__edited-timestamp {
+    color: #ffffff33;
+}
+
+.chatlog__embed-content-container {
+    background-color: #2e30364d;
+    border-color: #2e303699;
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: #ffffff99;
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: #ffffff99;
+}
+
+.chatlog__embed-footer {
+    color: #ffffff99;
+}
+
+.chatlog__reaction {
+    background-color: #ffffff0a;
+}
+
+.chatlog__reaction-count {
+    color: #ffffff4d;
+}
+    </style>
+</head>
+<body>
+    
+<div class="info">
+    <div class="info__guild-icon-container">
+        <img class="info__guild-icon" src="https://cdn.discordapp.com/icons/537248436932837388/b4816144eda043b99996d0399001f213.png" />
+    </div>
+    <div class="info__metadata">
+        <div class="info__guild-name">Untitled Solutions</div>
+        <div class="info__channel-name">questions-to-email</div>
+        
+
+        <div class="info__channel-message-count">20 messages</div>
+        
+    </div>
+</div>
+
+<div class="chatlog">
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/168819930702020608/4003ef7a5dbce2f6ad085fc6a5e9dd3c.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Valentia#6778">Valentia</span>
+                <span class="chatlog__timestamp">28-Jan-19 04:28 PM</span>
+
+                        <div class="chatlog__content">
+                            There&#39;re a couple of things worth asking about in the use cases that I can see.<br />1st: where&#39;s the authentication server going to be? Do we have to make that as well, or will it be provided? (If it&#39;s provided, the details of how we&#39;re supposed to interact w/ it for when we have to implement it.) (If it isn&#39;t provided, how they&#39;d like us to format the requests and confirmation)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            2nd: why would directors and HR employees like to log in with lower privileges? (What would directors even be able to access in that case?)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            3rd: can the HR director manage HR as well, or must they delegate to their employees? (Since atm they&#39;re just a director, so their only write-privilege is when reviewing)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            4th: there seem to be new record types made by the server and database. (E.g. authorisation-check record). Where are these stored? Who can read them? (Guessing they can&#39;t be modified. But we should ask anyway.) What does it record? (Timestamp, what was requested, who requested it?)
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            5th: perform review and allocate reviewer (among other use cases) say someone &quot;is informed of&quot; sth. How are they informed?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            6th: Allocate reviewer&#39;s alternate path says &quot;Allocation remains incomplete&quot;. So is it stored but not acted upon? (That sounds like it would clog up the filesystem) Can they edit it after it fails and resubmit it? Can they cancel the action, so it&#39;s not made?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            UML: <br />1 (Authenticate.di): Isn&#39;t a manager a type of employee?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            2 (Review.di): Authorisation check should have an arrow pointing to HR Database, bc authorization check records are stored in that database, right?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Jan-19 09:23 PM</span>
+
+                        <div class="chatlog__content">
+                            Q: &quot;Authorisation&quot; is a new actor. Will this functionality be provided, or do we have to implement it ourselves?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">28-Jan-19 09:24 PM</span>
+
+                        <div class="chatlog__content">
+                            3rd: does the HR director have the same privileges as HR employees in addition to their privileges as a director.
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Jan-19 09:26 PM</span>
+
+                        <div class="chatlog__content">
+                            Q: &quot;Authentication server&quot; is also a new actor. Will this functionality be provided, or do we have to implement it ourselves?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Q: If they are provided, how will we interact with &quot;:Authorisation&quot; and the &quot;Authentication server&quot;?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/embed/avatars/3.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="Kazoo2#4483">Kazoo2</span>
+                <span class="chatlog__timestamp">28-Jan-19 09:30 PM</span>
+
+                        <div class="chatlog__content">
+                            Q: login has an alternative flow saying &quot;authentication fails&quot; what occurs after this?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+        <div class="chatlog__message-group">
+            <div class="chatlog__author-avatar-container">
+                <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/361267235785932821/6527f038f558ec1b46d08fdb9649b2fe.png" />
+            </div>            
+            <div class="chatlog__messages">
+                <span class="chatlog__author-name" title="izlimix#3442">izlimix</span>
+                <span class="chatlog__timestamp">28-Jan-19 09:32 PM</span>
+
+                        <div class="chatlog__content">
+                            New record types:
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            end-of-authentication record, &quot;System has recorded an authentication attempt &quot;, authorisation-check record
+
+                                <span class="chatlog__edited-timestamp" title="28-Jan-19 09:33 PM">(edited)</span>
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Also Q: What does he mean by &quot;System has recorded an authentication attempt &quot;? What info does this record?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Q (Review.di): According to Use Case Scenarios, Employee should be able to &quot;Read review record&quot;, &quot;Amend review record&quot; and &quot;Read past completed review record&quot;, but the arrows are missing in the use case diagram. Which one should we follow?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Q (Review.di): According to Use Case Scenarios, &quot;Read past completed review record&quot; does not include &quot;Read review record&quot;, but the diagram shows that it does.Which one should we follow?
+
+                                <span class="chatlog__edited-timestamp" title="28-Jan-19 09:46 PM">(edited)</span>
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Q (Review.di): : According to Use Case Scenarios, &quot;Perform review&quot; includes &quot;Read past completed review records&quot; and &quot;Amend review record&quot;, but not in the use case diagram.Which one should we follow?
+
+                        </div>
+
+
+
+                        <div class="chatlog__content">
+                            Q (Review.di): Participating actors for  &quot;allocate reviewer&quot; in the scenarios include Manager and Director. 1: Should these be merged into the &quot;Reviewer&quot; actor? 2: &quot;Allocate reviewer&quot; in the diagram does not include an arrow to the Reviewer actor. Is this intentional?
+
+                        </div>
+
+
+
+            </div>
+        </div>
+</div>
+
+</body>
+</html>
